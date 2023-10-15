@@ -26,6 +26,9 @@
     ".": "./dist/index.js",
     "./constants": "./dist/constants/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
