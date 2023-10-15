@@ -16,7 +16,7 @@
     "declaration": true,
 
     "outDir": "dist",
-    // "rootDir": "src",
+    "rootDir": "src",
     "removeComments": false,
 
     "baseUrl": "./src",
@@ -40,7 +40,5 @@
 
     "forceConsistentCasingInFileNames": true,
     "pretty": true,
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "test/**/*"],
+  }
 }
