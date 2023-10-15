@@ -22,13 +22,6 @@
     "url": "https://4lch4.com"
   },
   "type": "module",
-  "exports": {
-    ".": "./dist/index.js",
-    "./constants": "./dist/constants/index.js"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -54,5 +47,8 @@
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
