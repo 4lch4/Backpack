@@ -1,0 +1,37 @@
+import { WinstonTransport } from '@axiomhq/winston'
+import { AxiomConfigVariable, AxiomConfigVariables, DEFAULT_LOG_SERVICE } from '@constants/index.js'
+import { arch, platform } from 'os'
+import Winston, { transports as WinstonTransports } from 'winston'
+
+const transports: Winston.transport[] = [
+  new WinstonTransports.Console({
+    format: Winston.format.combine(
+      Winston.format.colorize({ colors: { success: 'cyan', info: 'gray' } }),
+      Winston.format.simple()
+    ),
+  }),
+]
+
+// Ensure that we only log to Axiom if all required environment variables are set.
+if (process.env.AXIOM_DATASET && process.env.AXIOM_TOKEN && process.env.AXIOM_ORG_ID) {
+  transports.push(
+    new WinstonTransport({
+      dataset: process.env[AxiomConfigVariables.dataset],
+      token: process.env[AxiomConfigVariable.token],
+      orgId: process.env[AxiomConfigVariable.orgId],
+    })
+  )
+}
+
+export const logger = Winston.createLogger({
+  defaultMeta: {
+    service: process.env.LOG_SERVICE || DEFAULT_LOG_SERVICE,
+    nodeEnv: process.env.NODE_ENV || 'development',
+    hostname: process.env.HOSTNAME || 'localhost',
+    arch: arch(),
+    platform: platform(),
+  },
+  level: process.env.LOG_LEVEL || process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+  levels: { ...Winston.config.npm.levels, success: -1 },
+  transports,
+})
