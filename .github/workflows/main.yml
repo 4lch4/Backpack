@@ -6,9 +6,10 @@ name: Build & Release Workflow
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
+    tags: [ v* ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
   schedule:
     # Runs every day at midnight, to ensure any new versions of Bun don't break the build.
     - cron: '0 0 * * *'
