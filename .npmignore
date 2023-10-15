@@ -1,0 +1,23 @@
+# Directories
+**/.DS_Store
+**/.vercel
+**/site
+**/bin
+**/node_modules
+**/coverage
+**/out
+**/public
+**/tmp
+**/.cache
+**/.turbo
+**/.vercel
+**/.vscode
+
+# Files
+**/.dccache
+**/*.env
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+bun.lockb
+tsconfig.build.json
