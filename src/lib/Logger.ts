@@ -1,5 +1,9 @@
 import { WinstonTransport } from '@axiomhq/winston'
-import { DEFAULT_LOG_SERVICE } from '@constants/log/index.js'
+import {
+  DEFAULT_LOG_HOSTNAME,
+  DEFAULT_LOG_NODE_ENV,
+  DEFAULT_LOG_SERVICE,
+} from '@constants/log/index.js'
 import { arch, platform } from 'os'
 import Winston, { transports as WinstonTransports } from 'winston'
 
@@ -26,8 +30,8 @@ if (process.env.AXIOM_DATASET && process.env.AXIOM_TOKEN && process.env.AXIOM_OR
 export const logger = Winston.createLogger({
   defaultMeta: {
     service: process.env.LOG_SERVICE || DEFAULT_LOG_SERVICE,
-    nodeEnv: process.env.NODE_ENV || 'development',
-    hostname: process.env.HOSTNAME || 'localhost',
+    nodeEnv: process.env.NODE_ENV || DEFAULT_LOG_NODE_ENV,
+    hostname: process.env.HOSTNAME || DEFAULT_LOG_HOSTNAME,
     arch: arch(),
     platform: platform(),
   },
