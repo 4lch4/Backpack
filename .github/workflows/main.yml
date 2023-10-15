@@ -1,0 +1,34 @@
+name: Build & Release Workflow
+
+# - uses: oven-sh/setup-bun@v1
+#   with:
+#     bun-version: latest
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Runs every day at midnight, to ensure any new versions of Bun don't break the build.
+    - cron: '0 0 * * *'
+
+
+jobs:
+  build:
+    name: Build Codebase
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout Codebase
+
+      - uses: oven-sh/setup-bun@v1
+        name: Setup Bun
+        with:
+          bun-version: latest
+
+      - name: Build Codebase
+        run: bun run build
+
+      - name: Test Codebase
+        run: bun test
