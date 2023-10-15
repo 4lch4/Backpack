@@ -1,0 +1,54 @@
+{
+  "name": "@4lch4/backpack",
+  "displayName": "4lch4's Backpack",
+  "version": "0.0.0",
+  "description": "A collection of useful functions, constants, and more, for use in a variety of NodeJS packages/projects.",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/4lch4/Backpack",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc && tsc-alias",
+    "pretty": "prettier --write .",
+    "lint": "prettier -c .",
+    "test": "echo 'There are currently no tests available.'",
+    "scan": "snyk monitor && snyk code test"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "Backpack"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/4lch4/Backpack.git"
+  },
+  "author": {
+    "name": "4lch4",
+    "email": "hey@4lch4.email",
+    "url": "https://4lch4.com"
+  },
+  "bugs": {
+    "email": "bugs@4lch4.email",
+    "url": "https://github.com/4lch4/Backpack/issues"
+  },
+  "dependencies": {
+    "@axiomhq/winston": "^1.0.0-rc.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.6",
+    "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "prettier-plugin-packagejson": "^2.4.6",
+    "tsc-alias": "^1.0.0",
+    "typescript": "^5.2.2"
+  }
+}
