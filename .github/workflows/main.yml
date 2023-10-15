@@ -28,6 +28,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Install Dependencies
+        run: bun install
+
       - name: Build Codebase
         run: bun run build
 
