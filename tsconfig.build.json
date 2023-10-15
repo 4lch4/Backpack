@@ -1,22 +1,16 @@
+// Usage: tsc -p tsconfig.build.json
+// This is the tsconfig.json file used when building the library for distribution to npm.
 {
   "compilerOptions": {
-    // Add Bun type definitions.
-    "types": ["bun-types"],
-
-    // Enable latest features.
+    "incremental": true,
     "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["ESNext"],
-
-    // For TS 5.x+
-    "moduleResolution": "Bundler",
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
-    "moduleDetection": "force",
+    "module": "Node16",
     "declaration": true,
-
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "dist",
-    // "rootDir": "src",
+    "rootDir": "src",
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
     "removeComments": false,
 
     "baseUrl": "./src",
@@ -27,20 +21,25 @@
 
     "strict": true,
     "strictNullChecks": true,
-
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-
+    "moduleResolution": "Node16",
     "resolveJsonModule": true,
     "esModuleInterop": true,
 
     "allowSyntheticDefaultImports": true,
 
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "inlineSources": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    "noImplicitOverride": true,
     "pretty": true,
+    "skipLibCheck": true,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "test/**/*"],
+  "exclude": ["node_modules", "dist", "test/**/*"]
 }
