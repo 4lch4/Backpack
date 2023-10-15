@@ -1,5 +1,5 @@
 import { WinstonTransport } from '@axiomhq/winston'
-import { AxiomConfigVariable, DEFAULT_LOG_SERVICE } from '@constants/index.js'
+import { DEFAULT_LOG_SERVICE } from '@constants/log/index.js'
 import { arch, platform } from 'os'
 import Winston, { transports as WinstonTransports } from 'winston'
 
@@ -16,9 +16,9 @@ const transports: Winston.transport[] = [
 if (process.env.AXIOM_DATASET && process.env.AXIOM_TOKEN && process.env.AXIOM_ORG_ID) {
   transports.push(
     new WinstonTransport({
-      dataset: process.env[AxiomConfigVariable.dataset],
-      token: process.env[AxiomConfigVariable.token],
-      orgId: process.env[AxiomConfigVariable.orgId],
+      dataset: process.env.AXIOM_DATASET,
+      token: process.env.AXIOM_TOKEN,
+      orgId: process.env.AXIOM_ORG_ID,
     })
   )
 }

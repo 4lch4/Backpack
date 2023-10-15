@@ -1,8 +1,5 @@
-/** A single second worth of milliseconds (`1000`). */
-export const MS_PER_SECOND = 1000
-
 /** A single second of time in milliseconds. */
-export const SECOND = 1 * MS_PER_SECOND
+export const SECOND = 1 * 1000
 
 /** A single minute of time in milliseconds. */
 export const MINUTE = 60 * SECOND
