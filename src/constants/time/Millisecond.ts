@@ -21,4 +21,3 @@ export const MONTH = 30 * DAY
 
 /** A single year of time in milliseconds. */
 export const YEAR = 365 * DAY
-
