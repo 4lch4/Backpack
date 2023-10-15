@@ -1,35 +1,36 @@
 import { WinstonTransport } from '@axiomhq/winston'
 import {
+  AxiomDataSet,
+  AxiomOrgId,
+  AxiomToken,
   DEFAULT_LOG_HOSTNAME,
   DEFAULT_LOG_NODE_ENV,
   DEFAULT_LOG_SERVICE,
-} from '@constants/log/index.js'
+} from '@constants/index.js'
 import { arch, platform } from 'os'
 import Winston, { transports as WinstonTransports } from 'winston'
 
-const transports: Winston.transport[] = [
-  new WinstonTransports.Console({
-    format: Winston.format.combine(
-      Winston.format.colorize({ colors: { success: 'cyan', info: 'gray' } }),
-      Winston.format.simple()
-    ),
-  }),
-]
+export const ConsoleTransport = new WinstonTransports.Console({
+  format: Winston.format.combine(
+    Winston.format.colorize({ colors: { success: 'green', info: 'cyan' } }),
+    Winston.format.simple()
+  ),
+})
+
+export function AxiomTransport(dataset: string, token: string, orgId: string) {
+  return new WinstonTransport({ dataset, token, orgId })
+}
+
+const transports: Winston.transport[] = [ConsoleTransport]
 
 // Ensure that we only log to Axiom if all required environment variables are set.
-if (process.env.AXIOM_DATASET && process.env.AXIOM_TOKEN && process.env.AXIOM_ORG_ID) {
-  transports.push(
-    new WinstonTransport({
-      dataset: process.env.AXIOM_DATASET,
-      token: process.env.AXIOM_TOKEN,
-      orgId: process.env.AXIOM_ORG_ID,
-    })
-  )
+if (AxiomDataSet && AxiomOrgId && AxiomToken) {
+  transports.push(AxiomTransport(AxiomDataSet, AxiomToken, AxiomOrgId))
 }
 
 export const logger = Winston.createLogger({
   defaultMeta: {
-    service: process.env.LOG_SERVICE || DEFAULT_LOG_SERVICE,
+    service: process.env.LOG_SERVICE || process.env.APP_NAME || DEFAULT_LOG_SERVICE,
     nodeEnv: process.env.NODE_ENV || DEFAULT_LOG_NODE_ENV,
     hostname: process.env.HOSTNAME || DEFAULT_LOG_HOSTNAME,
     arch: arch(),
