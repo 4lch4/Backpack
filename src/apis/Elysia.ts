@@ -17,7 +17,7 @@ export function printRoutes(routes: InternalRoute[]) {
   console.log(`\n${table.toString()}\n`)
 }
 
-export const healthCheckRoutes = new Elysia()
+export const HealthCheckRoutes = new Elysia()
   .get('/health', () => 'OK')
   .get('/readiness', () => 'OK')
 
