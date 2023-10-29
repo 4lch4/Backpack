@@ -22,6 +22,11 @@
     "url": "https://4lch4.com"
   },
   "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./elysia": "./dist/apis/Elysia.js",
+    "./constants": "./dist/constants/index.js"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
