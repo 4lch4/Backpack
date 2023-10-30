@@ -14,10 +14,10 @@
     "removeComments": false,
 
     "baseUrl": "./src",
-    "paths": {
-    	"@constants/*": ["constants/*"],
-      "@lib/*": ["lib/*"],
-    },
+    // "paths": {
+    // 	"@constants/*": ["constants/*"],
+    //   "@lib/*": ["lib/*"],
+    // },
 
     "strict": true,
     "strictNullChecks": true,
