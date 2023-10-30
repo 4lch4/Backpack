@@ -25,7 +25,8 @@
   "exports": {
     ".": "./dist/index.js",
     "./elysia": "./dist/apis/Elysia.js",
-    "./constants": "./dist/constants/index.js"
+    "./constants": "./dist/constants/index.js",
+    "./io": "./dist/lib/io/index.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -41,6 +42,7 @@
   "dependencies": {
     "@axiomhq/winston": "^1.0.0-rc.1",
     "cli-table": "^0.3.11",
+    "dayjs": "^1.11.10",
     "elysia": "^0.7.21",
     "winston": "^3.11.0"
   },
