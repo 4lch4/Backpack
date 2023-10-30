@@ -37,7 +37,7 @@
     "build": "tsc -p tsconfig.build.json && tsc-alias",
     "lint": "prettier -c .",
     "pretty": "prettier --write .",
-    "prepublish": "bun test"
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "@axiomhq/winston": "^1.0.0-rc.1",
