@@ -1,7 +1,7 @@
 {
   "name": "@4lch4/backpack",
   "displayName": "4lch4's Backpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of useful functions, constants, and more, for use in a variety of NodeJS packages/projects.",
   "keywords": [
     "Backpack"
