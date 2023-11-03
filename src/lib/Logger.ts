@@ -17,7 +17,7 @@ import Winston, {
 /**
  * A Winston Transport that logs to console, with colors for success and info.
  */
-const ConsoleTransport = new WinstonTransports.Console({
+export const ConsoleTransport = new WinstonTransports.Console({
   format: Winston.format.combine(
     Winston.format.colorize({ colors: { success: 'green', info: 'cyan' } }),
     Winston.format.simple()
@@ -34,7 +34,7 @@ const ConsoleTransport = new WinstonTransports.Console({
  *
  * @returns A new Winston transport that logs to Axiom.
  */
-function AxiomTransport(dataset: string, token: string, orgId: string) {
+export function AxiomTransport(dataset: string, token: string, orgId: string) {
   return new WinstonTransport({ dataset, token, orgId })
 }
 
@@ -49,7 +49,7 @@ if (AxiomDataSet && AxiomOrgId && AxiomToken) {
 /**
  * An interface for the logger that extends the Winston logger and adds a `success` method.
  */
-interface Logger extends WinstonLogger {
+export interface Logger extends WinstonLogger {
   success: LeveledLogMethod
 }
 
@@ -57,7 +57,7 @@ interface Logger extends WinstonLogger {
  * A Winston logger that handles logging how I, _@4lch4_, prefer it be handled. It logs to the
  * console and to Axiom if the required environment variables are set.
  */
-const logger: Logger = Winston.createLogger({
+export const logger: Logger = Winston.createLogger({
   defaultMeta: {
     service: process.env.LOG_SERVICE || process.env.APP_NAME || DEFAULT_LOG_SERVICE,
     nodeEnv: process.env.NODE_ENV || DEFAULT_LOG_NODE_ENV,
@@ -71,5 +71,3 @@ const logger: Logger = Winston.createLogger({
 }) as Logger
 
 logger.success = logger.log.bind(logger, 'success')
-
-export { AxiomTransport, ConsoleTransport, logger }

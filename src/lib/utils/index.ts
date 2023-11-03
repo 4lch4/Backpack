@@ -1,2 +1,3 @@
-export * from './promises.js'
-export * from './time.js'
+export * from './Files.js'
+export * from './Promises.js'
+export * from './Time.js'

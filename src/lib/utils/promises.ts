@@ -1,4 +1,4 @@
-import { convertDelayToMs } from './time.js'
+import { convertDelayToMs } from './Time.js'
 
 /** The input to the `promiseTimeout` function. */
 export type PromiseTimeoutInput = {
