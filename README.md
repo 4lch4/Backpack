@@ -17,3 +17,10 @@ The `log` folder contains constants related to logging, such as the default serv
 ### Env
 
 The `env` folder contains constants related to environment variables, such as the names of environment variables I use in my projects.
+
+## Vendors
+
+As of `v1.0.0`, `@4lch4/backpack/vendors` exports the following:
+
+- `dayjs` as `Day`
+- `picocolors` as `pc`

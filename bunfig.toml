@@ -2,3 +2,10 @@
 
 # always enable coverage
 coverage = true
+
+[build]
+entrypoints = ['./src/index.ts']
+outdir = './dist'
+minify = true
+sourcemap = 'external'
+target = 'bun'

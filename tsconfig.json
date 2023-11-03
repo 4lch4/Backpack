@@ -13,7 +13,7 @@
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "moduleDetection": "force",
-    "declaration": true,
+    "experimentalDecorators": true,
 
     "outDir": "dist",
     "rootDir": "src",
@@ -40,5 +40,7 @@
 
     "forceConsistentCasingInFileNames": true,
     "pretty": true,
-  }
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*"]
 }

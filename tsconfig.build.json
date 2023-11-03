@@ -9,7 +9,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src",
+    // "rootDir": "src",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
     "removeComments": false,
 
@@ -41,5 +41,6 @@
     "pretty": true,
     "skipLibCheck": true,
   },
-  "exclude": ["node_modules", "dist", "test/**/*"]
+  "exclude": ["node_modules", "dist", "test/**/*"],
+  "include": ["src/**/*"]
 }

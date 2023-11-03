@@ -26,7 +26,9 @@
     ".": "./dist/index.js",
     "./elysia": "./dist/apis/Elysia.js",
     "./constants": "./dist/constants/index.js",
-    "./io": "./dist/lib/io/index.js"
+    "./io": "./dist/lib/io/index.js",
+    "./utils": "./dist/lib/utils/index.js",
+    "./vendors": "./dist/lib/Vendors.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -34,16 +36,17 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && tsc-alias",
+    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "lint": "prettier -c .",
-    "pretty": "prettier --write .",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "bun run build",
+    "pretty": "prettier --write ."
   },
   "dependencies": {
     "@axiomhq/winston": "^1.0.0-rc.1",
     "cli-table": "^0.3.11",
     "dayjs": "^1.11.10",
     "elysia": "^0.7.21",
+    "picocolors": "^1.0.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {
