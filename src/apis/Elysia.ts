@@ -103,7 +103,7 @@ function buildCliTable(routes: InternalRoute[]) {
  */
 export function printRoutes(
   routes: InternalRoute[],
-  { multiMethodRows = false, multiMethodSeparator = ' — ' }: PrintRoutesOptions
+  { multiMethodRows = false, multiMethodSeparator = ' — ' }: PrintRoutesOptions = {}
 ): void {
   const table = multiMethodRows
     ? buildCliMultiMethodTable(routes, multiMethodSeparator)
