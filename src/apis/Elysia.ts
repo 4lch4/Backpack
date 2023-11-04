@@ -24,6 +24,14 @@ export interface PrintRoutesOptions {
   multiMethodSeparator?: string
 }
 
+/**
+ * Builds a string using picocolors to color the given {@link HTTPMethod}. For example, the `DELETE`
+ * method will be colored red.
+ *
+ * @param method A {@link HTTPMethod} to color.
+ *
+ * @returns A string with the given {@link HTTPMethod} colored.
+ */
 function colorMethod(method: HTTPMethod): string {
   switch (method) {
     case 'GET':
@@ -40,6 +48,7 @@ function colorMethod(method: HTTPMethod): string {
       return method
   }
 }
+
 /**
  * Builds a {@link Table} object from the given {@link InternalRoute | InternalRoutes} where
  * each method of a route is on the **same** row.
@@ -116,17 +125,57 @@ export function printRoutes(
  * An Elysia Plugin that adds a `/health` and `/readiness` route to the application that return
  * `OK` as a string.
  */
-export const HealthCheckRoutes = new Elysia()
-  .get('/health', () => 'OK')
-  .get('/readiness', () => 'OK')
 
 /**
  * Creates an Elysia Plugin that adds a `/health` and `/readiness` route to the application that
- * return `OK` as a string. Both routes will be prefixed with the given `prefix` value.
- * @param prefix The prefix to use for the health check routes.
+ * return `OK` as a string. If the `prefix` param is provided then both routes will be prefixed with
+ * it.
+ *
+ * @param prefix An optional prefix to use for the health check routes.
  *
  * @returns An Elysia Plugin that adds a `/health` and `/readiness` route.
  */
-export function prefixedHealthCheckRoutes(prefix: string) {
-  return new Elysia({ prefix }).get('/health', () => 'OK').get('/readiness', () => 'OK')
-}
+export const HealthCheckRoutes = (prefix?: string) =>
+  new Elysia({ prefix, name: 'Health Check Routes' })
+    .get('/health', () => 'OK', {
+      detail: {
+        description: 'A health check that returns OK by default.',
+        tags: ['Health'],
+        summary: 'Health Check',
+        operationId: 'healthCheck',
+        responses: {
+          200: {
+            description: 'The application is healthy.',
+            content: {
+              'text/plain': {
+                schema: {
+                  type: 'string',
+                  example: 'OK',
+                },
+              },
+            },
+          },
+        },
+      },
+    })
+    .get('/readiness', () => 'OK', {
+      detail: {
+        description: 'A readiness check that returns OK by default.',
+        tags: ['Health'],
+        summary: 'Readiness Check',
+        operationId: 'readinessCheck',
+        responses: {
+          200: {
+            description: 'The application is ready to accept requests.',
+            content: {
+              'text/plain': {
+                schema: {
+                  type: 'string',
+                  example: 'OK',
+                },
+              },
+            },
+          },
+        },
+      },
+    })
