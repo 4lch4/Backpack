@@ -1,40 +1,40 @@
-import { Static, T } from '@sinclair/typebox'
+import { Static, Type } from '@sinclair/typebox'
 
 /**
  * A [TypeBox][0] schema object for a packages `package.json` file.
  *
  * [0]: https://github.com/sinclairzx81/typebox
  */
-export const PackageJSON = T.Partial(
-  T.Object({
+export const PackageJSON = Type.Partial(
+  Type.Object({
     /** The name of the package. */
-    name: T.String(),
+    name: Type.String(),
 
     /** The display name of the package. */
-    displayName: T.String(),
+    displayName: Type.String(),
 
     /** The version of the package. */
-    version: T.String({ pattern: '^[0-9]+.[0-9]+.[0-9]+.*$' }),
+    version: Type.String({ pattern: '^[0-9]+.[0-9]+.[0-9]+.*$' }),
 
     /** This helps people discover your package, as it's listed in `npm search`. */
-    description: T.String(),
+    description: Type.String(),
 
     /** This helps people discover your package as it's listed in `npm search`. */
-    keywords: T.Array(T.String()),
+    keywords: Type.Array(Type.String()),
 
     /** The url to the project homepage. */
-    homepage: T.String(),
+    homepage: Type.String(),
 
     /**
      * The url to your project's issue tracker and / or the email address to which issues should be
      * reported. These are helpful for people who encounter issues with your package.
      */
-    bugs: T.Union([
-      T.String(),
-      T.Partial(
-        T.Object({
-          url: T.String(),
-          email: T.String(),
+    bugs: Type.Union([
+      Type.String(),
+      Type.Partial(
+        Type.Object({
+          url: Type.String(),
+          email: Type.String(),
         })
       ),
     ]),
@@ -42,50 +42,50 @@ export const PackageJSON = T.Partial(
     /**
      * Specify the place where your code lives. This is helpful for people who want to contribute.
      */
-    repository: T.Union([
-      T.String(),
-      T.Object({
-        type: T.Optional(T.String()),
-        url: T.String(),
-        directory: T.Optional(T.String()),
+    repository: Type.Union([
+      Type.String(),
+      Type.Object({
+        type: Type.Optional(Type.String()),
+        url: Type.String(),
+        directory: Type.Optional(Type.String()),
       }),
     ]),
-    license: T.String(),
-    author: T.Union([
-      T.String(),
-      T.Object({
-        name: T.String(),
-        email: T.Optional(T.String()),
-        url: T.Optional(T.String()),
+    license: Type.String(),
+    author: Type.Union([
+      Type.String(),
+      Type.Object({
+        name: Type.String(),
+        email: Type.Optional(Type.String()),
+        url: Type.Optional(Type.String()),
       }),
     ]),
-    type: T.Union([T.Literal('module'), T.Literal('commonjs')]),
-    exports: T.Union([
-      T.String(),
-      T.Partial(
-        T.Object({
-          default: T.String(),
-          import: T.String(),
-          node: T.String(),
-          require: T.String(),
-          types: T.String(),
+    type: Type.Union([Type.Literal('module'), Type.Literal('commonjs')]),
+    exports: Type.Union([
+      Type.String(),
+      Type.Partial(
+        Type.Object({
+          default: Type.String(),
+          import: Type.String(),
+          node: Type.String(),
+          require: Type.String(),
+          types: Type.String(),
         })
       ),
     ]),
-    main: T.String(),
-    files: T.Array(T.String()),
-    scripts: T.Any(),
-    dependencies: T.Any(),
-    devDependencies: T.Any(),
-    peerDependencies: T.Any(),
-    optionalDependencies: T.Any(),
-    bundledDependencies: T.Any(),
-    engines: T.Any(),
-    publishConfig: T.Partial(
-      T.Object({
-        access: T.Union([T.Literal('public'), T.Literal('restricted')]),
-        registry: T.String(),
-        tag: T.String(),
+    main: Type.String(),
+    files: Type.Array(Type.String()),
+    scripts: Type.Any(),
+    dependencies: Type.Any(),
+    devDependencies: Type.Any(),
+    peerDependencies: Type.Any(),
+    optionalDependencies: Type.Any(),
+    bundledDependencies: Type.Any(),
+    engines: Type.Any(),
+    publishConfig: Type.Partial(
+      Type.Object({
+        access: Type.Union([Type.Literal('public'), Type.Literal('restricted')]),
+        registry: Type.String(),
+        tag: Type.String(),
       })
     ),
   })
