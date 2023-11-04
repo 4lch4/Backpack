@@ -59,7 +59,11 @@ export interface Logger extends WinstonLogger {
  */
 export const logger: Logger = Winston.createLogger({
   defaultMeta: {
-    service: process.env.LOG_SERVICE || process.env.APP_NAME || DEFAULT_LOG_SERVICE,
+    service:
+      process.env.LOG_SERVICE ||
+      process.env.API_NAME ||
+      process.env.APP_NAME ||
+      DEFAULT_LOG_SERVICE,
     nodeEnv: process.env.NODE_ENV || DEFAULT_LOG_NODE_ENV,
     hostname: process.env.HOSTNAME || DEFAULT_LOG_HOSTNAME,
     arch: arch(),
