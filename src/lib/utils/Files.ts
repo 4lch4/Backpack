@@ -1,3 +1,4 @@
+import { PackageJSON } from '@schemas/PackageJSON.js'
 import Day from 'dayjs'
 
 /**
@@ -11,4 +12,8 @@ import Day from 'dayjs'
  */
 export function timestampedFilename(filename: string) {
   return `${Day().format('YYYY-MM-DDTHH-mm-ss')}-${filename}`
+}
+
+export async function readPackageJSON(path: string): Promise<PackageJSON> {
+  return Bun.file(path).json<PackageJSON>()
 }

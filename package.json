@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@axiomhq/winston": "^1.0.0-rc.1",
+    "@sinclair/typebox": "^0.31.22",
     "cli-table": "^0.3.11",
     "dayjs": "^1.11.10",
     "elysia": "^0.7.21",

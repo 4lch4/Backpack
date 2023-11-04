@@ -23,6 +23,7 @@
     "paths": {
     	"@constants/*": ["constants/*"],
       "@lib/*": ["lib/*"],
+      "@schemas/*": ["schemas/*"]
     },
 
     "strict": true,
