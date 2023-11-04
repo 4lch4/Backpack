@@ -27,6 +27,13 @@ jobs:
       - name: Test Codebase
         run: bun test --coverage
 
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.0
+        with:
+          scope: "@4lch4"
+          # Used to pull node distributions from node-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
+          token: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish Package
         run: npm publish --access public
         env:
