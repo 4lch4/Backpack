@@ -1,18 +1,8 @@
 name: Build & Release Workflow
 
-# - uses: oven-sh/setup-bun@v1
-#   with:
-#     bun-version: latest
-
 on:
   push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main, develop ]
-  schedule:
-    # Runs every day at midnight, to ensure any new versions of Bun don't break the build.
-    - cron: '0 0 * * *'
-
+    tags: [ v* ]
 
 jobs:
   release:
