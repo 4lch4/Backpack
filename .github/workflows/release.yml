@@ -27,7 +27,7 @@ jobs:
         run: bun test --coverage
 
       - name: Publish Package
-        run: bun publish --access public
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
