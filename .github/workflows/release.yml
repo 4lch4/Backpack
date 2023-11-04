@@ -1,4 +1,4 @@
-name: Build & Test Workflow
+name: Build & Release Workflow
 
 # - uses: oven-sh/setup-bun@v1
 #   with:
@@ -15,8 +15,8 @@ on:
 
 
 jobs:
-  build:
-    name: Build Codebase
+  release:
+    name: Build, Test, & Release Package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,4 +35,9 @@ jobs:
 
       - name: Test Codebase
         run: bun test --coverage
+
+      - name: Publish Package
+        run: bun publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
