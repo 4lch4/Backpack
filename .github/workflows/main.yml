@@ -7,6 +7,7 @@ name: Build & Test Workflow
 on:
   push:
     branches: [ main, develop ]
+    tags-ignore: [ v* ]
   pull_request:
     branches: [ main, develop ]
   schedule:
